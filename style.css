@@ -1,0 +1,103 @@
+root{
+  --n: 1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: radial-gradient(circle, #0b456b, #021c37);
+}
+
+
+.clock {
+  /* making circle */
+  width: 35rem;
+  height: 35rem;
+  background-color: lightgray;
+  border-radius: 50%;
+  position: relative;
+  /* aligning the inner elements */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background: radial-gradient(circle, #05263c, #000d1a);
+}
+
+
+/* :: before is used to set things on the background  */
+.clock::before {
+  content: "";
+  width: 37rem;
+  height: 37rem;
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(to right, #00d9ff, #ee00ff);
+  /* using z index to set the div on the background */
+  z-index: -1;
+  /*  to give the shadow effect set opacity */
+  box-shadow: 0 0 1rem 1rem rgba(0,0,0,0.2);
+}
+
+.number {
+  transform: rotate(calc(30deg * var(--n)));
+  text-align: center;
+  inset: 1rem;
+  font-size: 2rem;
+  position: absolute;
+  color: #00d9ff;
+  text-shadow: 0 0 1rem #ee00ff;
+}
+
+.number b {
+  transform: rotate(calc(-30deg * var(--n)));
+  display: inline-block;
+}
+
+.center-dot {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: gray;
+  border-radius: 50%;
+  border: 0.3rem solid #00d9ff;
+}
+
+.hand {
+  --rotate: 0;
+  position: absolute;
+  left:  50%;
+  bottom: 50%;
+  border-radius: 30px 30px 0 0 ;
+  /* this translate is to align it properly */
+  transform: translate(-50%) rotate(calc(var(--rotate) * 1deg));
+  /* to relocate the oring from middle to bottom */
+  transform-origin: bottom;
+  /* color of the hands */
+  background: linear-gradient(to top, #00d9ff, #ee00ff);
+}
+
+.hour-hand {
+  height:10rem;
+  width: 0.5rem;
+}
+  
+.minute-hand {
+  height:11rem;
+  width: 0.3rem;
+}
+  
+.second-hand {
+  height:12rem;
+  width: 0.2rem;
+}
+  
